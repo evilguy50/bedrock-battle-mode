@@ -1,10 +1,14 @@
 name: "regolith-action"
 
 on:
+  push:
+    branches:
+    - main
   workflow_dispatch:
     
 env:
   profile: local
+  build_path: ./build/**/*
 
 jobs:
   build:
@@ -49,5 +53,5 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v3
         with:
-          name: bedrock-battle-mode
-          path: ./build/**/*
+          name: ${{ github.event.repository.name }}
+          path: $build_path
