@@ -120,7 +120,7 @@ definefunction <spawns>:
                 var new_p = p + 1
                 tp @e[scores={player=`eval:new_p`}] `eval:pl` facing `eval:new_face`
 definefunction <refill>:
-    foreach <m map ["cavern", "cove"]>:
+    foreach <m map maps>:
         var new_m = m + 1
         execute if score map settings matches `eval:new_m` run function `eval:mechs`chests/`eval:map`/refill
 definefunction <lobby>:
