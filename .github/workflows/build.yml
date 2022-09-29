@@ -8,7 +8,6 @@ on:
     
 env:
   profile: local
-  build_path: ./build/**/*
 
 jobs:
   build:
@@ -52,6 +51,8 @@ jobs:
         run: echo $profile | xargs regolith run
       - name: upload
         uses: actions/upload-artifact@v3
+        env:
+          build_path: ./build/**/*
         with:
           name: ${{ github.event.repository.name }}
           path: ${{build_path}}
