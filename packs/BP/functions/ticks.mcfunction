@@ -1,5 +1,4 @@
 var mechs = "mechanics/"
-var map_count = 1
 definefunction <1tick>:
     # 1 tick function
 definefunction <5tick>:
@@ -12,7 +11,7 @@ definefunction <10tick>:
     function `eval:mechs`settings
 definefunction <1sec>:
     # 1 second function
-    execute if score spawned settings matches 1 if score started settings matches 0 if score start_timer settings matches 0..10 if score map settings matches 1..`eval:map_count` run function `eval:mechs`start/countdown
+    execute if score spawned settings matches 1 if score started settings matches 0 if score start_timer settings matches 0..10 if score map settings matches 1.. run function `eval:mechs`start/countdown
 definefunction <5sec>:
     # 5 second function
 definefunction <10sec>:
