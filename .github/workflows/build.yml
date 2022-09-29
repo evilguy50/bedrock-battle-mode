@@ -46,3 +46,8 @@ jobs:
           dotnet --list-sdks
       - name: compile
         run: echo $profile | xargs regolith run
+      - name: upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: bedrock-battle-mode
+          path: ./**/*
