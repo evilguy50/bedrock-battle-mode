@@ -1,0 +1,46 @@
+name: "regolith-action"
+
+on:
+  workflow_dispatch:
+    
+env:
+  profile: local
+
+jobs:
+  build:
+    runs-on: "ubuntu-22.04"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: vx.x.x
+      - name: nim
+        uses: iffy/install-nim@v4.2.0
+        with:
+          version: stable
+      - name: regolith
+        run: |
+          sudo apt install jq -y
+          curl --silent https://api.github.com/repos/Bedrock-OSS/regolith/releases/latest > versions.json
+          cat versions.json | jq -r ".assets[8].browser_download_url" | xargs wget
+          cat versions.json | jq -r ".tag_name" > tag.txt
+          tar -xzf regolith_$(cat tag.txt)_Linux_x86_64.tar.gz
+          mv regolith /usr/local/bin
+          rm regolith_$(cat tag.txt)_Linux_x86_64.tar.gz
+          chmod +x /usr/local/bin/regolith
+      - name: unlock
+        run: regolith unlock
+      - name: install
+        run: regolith install-all
+      - name: list versions
+        run: |
+          python --version
+          node -v
+          nim -v
+          java -version
+          deno --version
+          dotnet --list-sdks
+      - name: compile
+        run: echo $profile | xargs regolith run

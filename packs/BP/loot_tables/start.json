@@ -1,0 +1,85 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "weight": 15,
+                    "name": "loot_tables/start/swordsman.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 15,
+                    "name": "loot_tables/start/heavy.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 15,
+                    "name": "loot_tables/start/scout.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 10,
+                    "name": "loot_tables/start/mage.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 10,
+                    "name": "loot_tables/start/healer.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 11,
+                    "name": "loot_tables/start/ninja.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 8,
+                    "name": "loot_tables/start/pirate.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 8,
+                    "name": "loot_tables/start/gardener.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 8,
+                    "name": "loot_tables/start/pyro.lt.json"
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "empty",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "minecraft:apple",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": 2
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "minecraft:cooked_porkchop",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": 2
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

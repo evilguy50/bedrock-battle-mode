@@ -1,0 +1,7 @@
+pack.name=battle_mode resource pack
+pack.description=generated with Pulsar
+
+
+entity.pulsar:chest_refill.name=chest_refill
+item.spawn_egg.entity.pulsar:chest_refill.name=chest_refill
+item.pulsar:tnt=tnt

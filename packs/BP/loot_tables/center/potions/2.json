@@ -1,0 +1,39 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 27
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 34
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 23
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

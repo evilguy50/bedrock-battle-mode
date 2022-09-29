@@ -1,0 +1,21 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "loot_tables/start/scout/1.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "name": "loot_tables/start/scout/2.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "name": "loot_tables/start/scout/3.lt.json"
+                }
+            ]
+        }
+    ]
+}

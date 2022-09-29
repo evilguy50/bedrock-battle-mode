@@ -1,0 +1,40 @@
+{
+    "pools": [
+        {
+            "rolls": 3,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "weight": 25,
+                    "name": "loot_tables/center/food.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 18,
+                    "name": "loot_tables/center/potion.lt.json"
+                },
+                {
+                    "type": "item",
+                    "weight": 20,
+                    "name": "minecraft:arrow",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 20,
+                    "name": "loot_tables/center/weapon.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 17,
+                    "name": "loot_tables/center/special.lt.json"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pulsar:chest_refill",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"geometry": {
+				"default": "geometry.chest_refill"
+			},
+			"render_controllers": [
+				"controller.render.chest_refill"
+			],
+			"textures": {
+				"default": "textures/entity/chest_refill"
+			},
+            "spawn_egg": {
+         "texture": "chest_refill",
+	 "texture_index": 0
+            }
+		}
+	}
+}

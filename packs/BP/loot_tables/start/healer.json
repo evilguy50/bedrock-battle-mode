@@ -1,0 +1,21 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "loot_tables/start/healer/1.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "name": "loot_tables/start/healer/2.lt.json"
+                },
+                {
+                    "type": "loot_table",
+                    "name": "loot_tables/start/healer/3.lt.json"
+                }
+            ]
+        }
+    ]
+}

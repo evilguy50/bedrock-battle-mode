@@ -1,0 +1,388 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "weight": 20,
+                    "name": "minecraft:wooden_sword"
+                },
+                {
+                    "type": "item",
+                    "weight": 20,
+                    "pools": [
+                        {
+                            "rolls": 1,
+                            "entries": [
+                                {
+                                    "type": "item",
+                                    "name": "minecraft:bow"
+                                }
+                            ]
+                        },
+                        {
+                            "rolls": 1,
+                            "entries": [
+                                {
+                                    "type": "item",
+                                    "name": "minecraft:arrow",
+                                    "functions": [
+                                        {
+                                            "function": "set_count",
+                                            "count": 5
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "weight": 20,
+                    "name": "minecraft:wooden_axe"
+                },
+                {
+                    "type": "item",
+                    "weight": 20,
+                    "name": "minecraft:wooden_pickaxe",
+                    "functions": [
+                        {
+                            "function": "specific_enchants",
+                            "enchants": [
+                                {
+                                    "id": "sharpness",
+                                    "level": 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "weight": 20,
+                    "name": "minecraft:wooden_shovel",
+                    "functions": [
+                        {
+                            "function": "specific_enchants",
+                            "enchants": [
+                                {
+                                    "id": "sharpness",
+                                    "level": 2
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:apple"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:cooked_porkchop"
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "pools": [
+                        {
+                            "rolls": 1,
+                            "entries": [
+                                {
+                                    "type": "item",
+                                    "pools": [
+                                        {
+                                            "rolls": 1,
+                                            "entries": [
+                                                {
+                                                    "type": "item",
+                                                    "name": "minecraft:potion",
+                                                    "functions": [
+                                                        {
+                                                            "function": "set_data",
+                                                            "data": 21
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "rolls": 1,
+                                            "entries": [
+                                                {
+                                                    "type": "item",
+                                                    "name": "minecraft:potion",
+                                                    "functions": [
+                                                        {
+                                                            "function": "set_data",
+                                                            "data": 21
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "rolls": 1,
+                                            "entries": [
+                                                {
+                                                    "type": "item",
+                                                    "name": "minecraft:potion",
+                                                    "functions": [
+                                                        {
+                                                            "function": "set_data",
+                                                            "data": 21
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "name": "minecraft:potion",
+                                    "functions": [
+                                        {
+                                            "function": "set_data",
+                                            "data": 28
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "name": "minecraft:potion",
+                                    "functions": [
+                                        {
+                                            "function": "set_data",
+                                            "data": 14
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "name": "minecraft:potion",
+                                    "functions": [
+                                        {
+                                            "function": "set_data",
+                                            "data": 12
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "name": "minecraft:potion",
+                                    "functions": [
+                                        {
+                                            "function": "set_data",
+                                            "data": 7
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 27
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 34
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 17
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 23
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 21
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 23
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:leather_helmet"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:leather_chestplate"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:leather_leggings"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:leather_boots"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chainmail_helmet"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chainmail_chestplate"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chainmail_leggings"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chainmail_boots"
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:arrow",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": 2
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 28
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:arrow",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": 3
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 35
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:arrow",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": 3
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 18
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_helmet",
+                    "functions": [
+                        {
+                            "function": "specific_enchants",
+                            "enchants": [
+                                {
+                                    "id": "protection",
+                                    "level": 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_boots",
+                    "functions": [
+                        {
+                            "function": "specific_enchants",
+                            "enchants": [
+                                {
+                                    "id": "protection",
+                                    "level": 1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
