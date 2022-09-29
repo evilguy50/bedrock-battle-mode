@@ -1,0 +1,26 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "pack.description",
+        "name": "pack.name",
+        "uuid": "ded07a03-0a1a-46ff-b17d-fa55bc4217e7",
+        "version": [0, 0, 1],
+        "min_engine_version": [1, 19, 10]
+    },
+    "metadata": {
+        "generated_with": {
+            "Pulsar": [
+                "2.3.0"
+            ],
+            "regolith": [
+                "0.0.18"
+            ]
+        }
+    },
+    "modules": [{
+        "description": "pack.description",
+        "type": "resources",
+        "uuid": "6a66a6be-14cb-428e-bba2-39877f2b90c2",
+        "version": [0, 0, 1]
+    }]
+}

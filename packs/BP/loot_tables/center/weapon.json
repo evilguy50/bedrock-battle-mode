@@ -1,0 +1,22 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:wooden_sword"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:wooden_axe"
+                },
+                {
+                    "type": "item",
+                    "weight": 10,
+                    "name": "minecraft:bow"
+                }
+            ]
+        }
+    ]
+}

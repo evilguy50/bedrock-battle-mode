@@ -1,0 +1,41 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.tnt.hold_first_person": {
+			"loop": true,
+			"bones": {
+				"rightArm": {
+					"rotation": [95, -45, 115],
+					"position": [13.5, -10, 12]
+				},
+				"rightItem": {
+					"position": [-6, -9, 0]
+				},
+				"leftArm": {
+					"scale": 0
+				},
+				"tnt": {
+					"rotation": [20.91527, -19.291, -5.38152],
+					"position": [12, 15, 21],
+					"scale": 0.5
+				}
+			}
+		},
+		"animation.tnt.hold_third_person": {
+			"loop": true,
+			"bones": {
+				"rightItem": {
+					"position": [-6, -9, 1]
+				},
+				"leftItem": {
+					"position": [6, -9, 1]
+				},
+				"tnt": {
+					"rotation": [20.9936, -21.93857, -5.123],
+					"position": [-8, 7, -3],
+					"scale": 0.5
+				}
+			}
+		}
+	}
+}

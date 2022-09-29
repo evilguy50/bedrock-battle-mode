@@ -1,0 +1,142 @@
+{
+  "name": "battle_mode",
+  "author": "evil",
+  "packs": {
+    "behaviorPack": "./packs/BP",
+    "resourcePack": "./packs/RP"
+  },
+  "regolith": {
+    "dataPath": "./packs/data",
+    "filterDefinitions": {
+      "blockbench_convert": {
+        "version": "latest"
+      },
+      "classes": {
+        "url": "github.com/evilguy50/my-regolith-filters",
+        "version": "latest"
+      },
+      "ds_store": {
+        "url": "github.com/evilguy50/my-regolith-filters",
+        "version": "1.0.0"
+      },
+      "namespace": {
+        "runWith": "nim",
+        "script": "./filters/namespace/name.nim"
+      },
+      "style_lint": {
+        "url": "github.com/evilguy50/my-regolith-filters",
+        "version": "latest"
+      },
+      "new_exec": {
+        "url": "github.com/evilguy50/my-regolith-filters",
+        "version": "latest"
+      },
+      "subfunctions": {
+        "url": "github.com/Nusiq/regolith-filters",
+        "version": "latest"
+      },
+      "texture_convert": {
+        "version": "latest"
+      },
+      "texture_list": {
+        "version": "1.1.1"
+      },
+      "no_blank": {
+        "script": "./filters/no_blank/no_blank.nim",
+        "runWith": "nim"
+      },
+      "timer": {
+        "script": "./filters/timer/timer.nim",
+        "runWith": "nim"
+      },
+      "xml_cmds": {
+        "script": "./filters/xml_cmds/xml.nim",
+        "runWith": "nim"
+      }
+    },
+    "profiles": {
+      "dev": {
+        "export": {
+          "readOnly": false,
+          "target": "development"
+        },
+        "filters": [
+          {
+            "filter": "subfunctions"
+          },
+          {
+            "filter": "xml_cmds"
+          },
+          {
+            "filter": "timer"
+          },
+          {
+            "filter": "namespace"
+          },
+          {
+            "filter": "texture_convert"
+          },
+          {
+            "filter": "blockbench_convert"
+          },
+          {
+            "filter": "texture_list"
+          },
+          {
+            "filter": "style_lint"
+          },
+          {
+            "filter": "ds_store"
+          },
+          {
+            "filter": "new_exec"
+          },
+          {
+            "filter": "no_blank"
+          }
+        ]
+      },
+      "local": {
+        "export": {
+          "readOnly": false,
+          "target": "local"
+        },
+        "filters": [
+          {
+            "filter": "subfunctions"
+          },
+          {
+            "filter": "xml_cmds"
+          },
+          {
+            "filter": "timer"
+          },
+          {
+            "filter": "namespace"
+          },
+          {
+            "filter": "texture_convert"
+          },
+          {
+            "filter": "blockbench_convert"
+          },
+          {
+            "filter": "texture_list"
+          },
+          {
+            "filter": "style_lint"
+          },
+          {
+            "filter": "ds_store"
+          },
+          {
+            "filter": "new_exec"
+          },
+          {
+            "filter": "no_blank"
+          }
+        ]
+      }
+    }
+  }
+}

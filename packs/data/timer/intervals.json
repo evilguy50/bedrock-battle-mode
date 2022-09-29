@@ -1,0 +1,37 @@
+{
+    "intervals": {
+        "1t": [
+            "ticks/1tick"
+        ],
+        "5t": [
+            "ticks/5tick"
+        ],
+        "10t": [
+            "ticks/10tick"
+        ],
+        "1s": [
+            "ticks/1sec"
+        ],
+        "5s": [
+            "ticks/5sec"
+        ],
+        "10s": [
+            "ticks/10sec"
+        ],
+        "30s": [
+            "ticks/30sec"
+        ],
+        "1m": [
+            "ticks/1min"
+        ],
+        "5m": [
+            "ticks/5min"
+        ],
+        "10m": [
+            "ticks/10min"
+        ],
+        "1d": [
+            "ticks/1day"
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "commands": [
+        {
+            "name": "test",
+            "vars": [
+                "example"
+            ],
+            "commands": [
+                "say xml $example"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "pack.description",
+    "name": "pack.name",
+    "uuid": "a6ddd26c-b86e-494e-8fbc-ce9c9127c4ee",
+    "version": [0, 0, 1],
+    "min_engine_version": [1, 19, 10]
+  },
+  "modules": [{
+    "description": "pack.description",
+    "type": "data",
+    "uuid": "19d9b4af-e5dc-4433-9ba5-254f37a3c14b",
+    "version": [0, 0, 1]
+  }],
+  "metadata": {
+    "generated_with": {
+      "Pulsar": [
+        "2.3.0"
+      ],
+      "regolith": [
+        "0.0.18"
+      ]
+    }
+  },
+  "dependencies": [{
+    "uuid": "ded07a03-0a1a-46ff-b17d-fa55bc4217e7",
+    "version": [0, 0, 1]
+  }]
+}

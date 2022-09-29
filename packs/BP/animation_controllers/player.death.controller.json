@@ -1,0 +1,21 @@
+{
+  "format_version": "1.18.0",
+  "animation_controllers" : {
+    "controller.animation.player.death" : {
+      "initial_state" : "default",
+      "states" : {
+        "default" : {
+          "transitions" : [
+            { "alive" : "query.is_alive" }
+          ]
+        },
+        "alive" : {
+          "on_exit": ["/execute if score spawned settings matches 1 if score started settings matches 1 run gamemode spectator @s"],
+          "transitions" : [
+            { "default" : "!query.is_alive" }
+          ]
+        }
+      }
+    }
+  }
+}
