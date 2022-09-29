@@ -20,19 +20,27 @@ definefunction <start>:
         foreach <p pl ["255.61 26.00 12.60", "259.60 26.00 21.47", "268.69 26.00 25.51", "277.48 26.00 21.47", "281.47 26.00 12.34", "277.42 26.00 3.57", "268.28 26.00 -0.43", "259.35 26.00 3.69"]>:
             var new_p = p + 1
             tp @e[scores={player=`eval:new_p`}] `eval:pl` facing 268 29 12
+    execute if score map settings matches 2 run function <cove>:
+        foreach <p pl ["1337.27 -44.00 189.45", "1335.31 -44.00 185.51", "1331.24 -44.00 183.53", "1327.42 -44.00 185.40", "1325.53 -44.00 189.71", "1327.66 -44.00 193.67", "1331.61 -44.00 195.39", "1335.53 -44.00 193.49"]>:
+            var new_p = p + 1
+            tp @e[scores={player=`eval:new_p`}] `eval:pl` facing 1331 -43 189
     execute @a ~~~ spawnpoint @s ~~~
     execute if score map settings matches 1.. run scoreboard players set spawned settings 1
     definefunction <countdown>:
-        execute if score start_timer settings matches 0..6 run fill 251 24 -6 285 36 31 barrier 0 replace structure_void -1
+        execute if score start_timer settings matches 0..6 if score map settings matches 1 run fill 251 24 -6 285 36 31 barrier 0 replace structure_void -1
+        execute if score start_timer settings matches 0..6 if score map settings matches 2 run fill 1340 -47 198 1319 -38 178 barrier 0 replace structure_void -1
         execute if score start_timer settings matches 0 if score map settings matches 1 run function `eval:mechs`chests/cavern/empty
+        execute if score start_timer settings matches 0 if score map settings matches 2 run function `eval:mechs`chests/cove/empty
         execute if score start_timer settings matches 0 run scoreboard players set start_timer settings 6
         scoreboard players remove start_timer settings 1
         for <t 6..0 -1>:
             execute if score start_timer settings matches `eval:t` run title @a title §a`eval:t`
         execute if score start_timer settings matches 0 run function <done>:
-            fill 251 24 -6 285 36 31 structure_void 0 replace barrier -1
+            execute if score map settings matches 1 run fill 251 24 -6 285 36 31 structure_void 0 replace barrier -1
+            execute if score map settings matches 2 run fill 1340 -47 198 1319 -38 178 structure_void 0 replace barrier -1
             title @a title §4Fight!
             execute if score map settings matches 1 run function `eval:mechs`chests/cavern/fill
+            execute if score map settings matches 2 run function `eval:mechs`chests/cove/fill
             scoreboard players set started settings 1
 definefunction <restart>:
     function <check>:
@@ -86,9 +94,40 @@ definefunction <chests>:
                 summon pulsar:chest_refill `eval:chest`
             definefunction <particle>:
                 execute @e[type=pulsar:chest_refill] ~~~ particle minecraft:basic_crit_particle ~ ~1.5 ~
-                execute as @e[type=pulsar:chest_refill] at @s if block ~ ~ ~ barrel["open_bit": true] run kill @s
+                execute as @e[type=pulsar:chest_refill] at @s if block ~ ~ ~ barrel["open_bit": true] run event entity @s evil:despawn_ev
+
+    execute if score map settings matches 2 if score started settings matches 1 run function <cove>:
+        var cove = ["1330 -50 188", "1330 -50 190", "1332 -50 190", "1331 -49 189", "1332 -50 188", "1375 -27 172", "1382 -56 200", "1286 -45 198", "1365 -27 186", "1314 -31 184", "1393 -24 187", "1363 -37 190", "1358 -22 208", "1355 -50 225", "1352 -43 160", "1312 -40 187", "1297 -40 211", "1320 -31 198", "1351 -33 159", "1312 -49 149"]
+        definefunction <empty>:
+            kill @e[type=pulsar:chest_refill]
+            foreach <c chest cove>:
+                setblock `eval:chest` minecraft:barrel 
+                for <i 0..27 1>:
+                    replaceitem block `eval:chest` slot.container `eval:i` air
+                execute @s `eval:chest` setblock ~ ~1 ~ air
+        definefunction <fill>:
+            foreach <c chest cove>:
+                loot insert `eval:chest` loot start.lt
+        definefunction <refill>:
+            var cove_center = ["1330 -50 188", "1330 -50 190", "1332 -50 190", "1331 -49 189", "1332 -50 188"]
+            var cove_high = ["1375 -27 172", "1382 -56 200", "1286 -45 198", "1365 -27 186", "1314 -31 184"]
+            var cove_outer = ["1393 -24 187", "1363 -37 190", "1358 -22 208", "1355 -50 225", "1352 -43 160", "1312 -40 187", "1297 -40 211", "1320 -31 198", "1351 -33 159", "1312 -49 149"]
+            event entity @e[type=pulsar:chest_refill] evil:despawn_ev
+            foreach <c chest_c cove_center>:
+                loot insert `eval:chest_c` loot center.lt
+            foreach <c chest_o cove_outer>:
+                loot insert `eval:chest_o` loot out.lt
+            foreach <c chest_h cove_high>:
+                loot insert `eval:chest_h` loot high.lt
+            foreach <c chest cove>:
+                summon pulsar:chest_refill `eval:chest`
+            definefunction <particle>:
+                execute @e[type=pulsar:chest_refill] ~~~ particle minecraft:basic_crit_particle ~ ~1.5 ~
+                execute as @e[type=pulsar:chest_refill] at @s if block ~ ~ ~ barrel["open_bit": true] run event entity @s evil:despawn_ev
+
+    
 definefunction <refill>:
-    foreach <m map ["cavern"]>:
+    foreach <m map ["cavern", "cove"]>:
         var new_m = m + 1
         execute if score map settings matches `eval:new_m` run function `eval:mechs`chests/`eval:map`/refill
 definefunction <lobby>:
