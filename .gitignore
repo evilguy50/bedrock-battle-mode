@@ -1,4 +1,6 @@
 work.exe
 .regolith
 build
+packs/data/dash/deno_dash
 ref
+*.exe
