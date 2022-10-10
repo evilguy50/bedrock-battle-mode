@@ -8,6 +8,10 @@
   "regolith": {
     "dataPath": "./packs/data",
     "filterDefinitions": {
+      "dash": {
+        "url": "github.com/evilguy50/my-regolith-filters",
+        "version": "latest"
+      },
       "blockbench_convert": {
         "version": "latest"
       },
@@ -115,19 +119,22 @@
             "filter": "namespace"
           },
           {
-            "filter": "texture_convert"
+            "filter": "blockbench_convert"
           },
           {
-            "filter": "blockbench_convert"
+            "filter": "texture_convert"
           },
           {
             "filter": "texture_list"
           },
           {
-            "filter": "style_lint"
+            "filter": "ds_store"
           },
           {
-            "filter": "ds_store"
+            "filter": "dash"
+          },
+          {
+            "filter": "style_lint"
           },
           {
             "filter": "new_exec"

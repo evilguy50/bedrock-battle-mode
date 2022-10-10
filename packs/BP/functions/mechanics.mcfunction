@@ -134,3 +134,8 @@ definefunction <lobby>:
         foreach <s skull ["wither"]>:
             var new_skull = skulls[s]
             structure load `eval:skull` `eval:new_skull`
+
+definefunction <bridge_test>:
+    for <i 1..6 1>:
+        function <`eval:i`>:
+            helloworld evil raver derek
