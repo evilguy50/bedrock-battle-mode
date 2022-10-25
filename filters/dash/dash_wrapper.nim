@@ -50,8 +50,7 @@ removeDir("./BP")
 if dirExists("./data/dash/build/builds/dist/" & config["name"].to(string) & " BP"):
     moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " BP", "./BP")
 else:
-    for foo in os.walkDir("./data/dash/build/builds/dist/"):
-        echo foo
+    echo os.execShellCmd("ls -al")
 removeDir("./RP")
 if dirExists("./data/dash/build/builds/dist/" & config["name"].to(string) & " RP"):
     moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " RP", "./RP")
