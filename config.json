@@ -8,10 +8,6 @@
   "regolith": {
     "dataPath": "./packs/data",
     "filterDefinitions": {
-      "dash_remote": {
-        "url": "github.com/evilguy50/my-regolith-filters",
-        "version": "latest"
-      },
       "dash": {
         "script": "./filters/dash/dash_wrapper.nim",
         "runWith": "nim"
