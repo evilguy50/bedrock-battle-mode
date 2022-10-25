@@ -47,6 +47,11 @@ discard execShellCmd("dash_compiler build --out ./data/dash/build")
 let config = readFile("./data/dash/config.json").parseJson()
 
 removeDir("./BP")
-moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " BP", "./BP")
+if dirExists("./data/dash/build/builds/dist/" & config["name"].to(string) & " BP"):
+    moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " BP", "./BP")
+else:
+    for foo in os.walkDir("./data/dash/build/builds/dist/"):
+        echo foo
 removeDir("./RP")
-moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " RP", "./RP")
+if dirExists("./data/dash/build/builds/dist/" & config["name"].to(string) & " RP"):
+    moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " RP", "./RP")
