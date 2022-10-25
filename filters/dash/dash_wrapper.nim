@@ -10,7 +10,7 @@ if not dirExists("./data/dash/deno_dash"):
     discard execShellCmd("git clone https://github.com/bridge-core/deno-dash-compiler.git ./data/dash/deno_dash")
     var root = getCurrentDir()
     setCurrentDir("./data/dash/deno_dash")
-    discard execShellCmd("deno task install")
+    discard execShellCmd("deno task install:full")
     setCurrentDir(root)
 
 copyFile("./data/dash/config.json", "./config.json")
