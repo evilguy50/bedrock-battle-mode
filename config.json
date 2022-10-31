@@ -9,7 +9,7 @@
     "dataPath": "./packs/data",
     "filterDefinitions": {
       "dash": {
-        "script": "./filters/dash/dash_wrapper.nim",
+        "script": "./filters/dash/dash.nim",
         "runWith": "nim"
       },
       "blockbench_convert": {
