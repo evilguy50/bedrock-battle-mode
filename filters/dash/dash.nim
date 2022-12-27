@@ -25,6 +25,7 @@ if not dirExists("./data/dash/dash_compiler"):
     setCurrentDir(filterDir)
 
 copyFile(fmt"{rootDir}/config.json", "./config.json")
+sleep(1000)
 
 discard execShellCmd("dash_compiler build --compilerConfig:./config.json")
 
