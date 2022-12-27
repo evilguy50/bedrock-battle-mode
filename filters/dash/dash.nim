@@ -27,7 +27,7 @@ if not dirExists("./data/dash/dash_compiler"):
 copyFile(fmt"{rootDir}/config.json", "./config.json")
 sleep(1000)
 
-discard execShellCmd("dash_compiler build --compilerConfig:./config.json")
+discard execShellCmd("dash_compiler build")
 
 let configName: string = config["name"].to(string)
 for pack in @["BP", "RP"]:
