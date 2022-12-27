@@ -9,3 +9,4 @@ license       = "MIT"
 
 requires "nim >= 1.4.6"
 requires "puppy"
+requires "zippy"
