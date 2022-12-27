@@ -5,7 +5,7 @@ import zippy/ziparchives
 
 const dashVersion = "0.4.4"
 let rootDir = getEnv("ROOT_DIR")
-let filterDir = getEnv("FILTER_DIR")
+let filterDir = getCurrentDir()
 let config = parseFile(fmt"{rootDir}/config.json")
 
 if not config.hasKey("compiler"):
@@ -22,8 +22,9 @@ if not dirExists("./data/dash/dash_compiler"):
     removeFile("./data/dash/dash.zip")
     setCurrentDir("./data/dash/dash_compiler")
     discard execShellCmd("deno task install:full")
-    setCurrentDir(filterDir)
 
+echo filterDir
+setCurrentDir(filterDir)
 copyFile(fmt"{rootDir}/config.json", "./config.json")
 sleep(1000)
 
