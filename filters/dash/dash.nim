@@ -1,32 +1,35 @@
 import os, json, strformat
 import puppy
+import zippy/ziparchives
+
+
+const dashVersion = "0.4.4"
+let rootDir = getEnv("ROOT_DIR")
+let filterDir = getEnv("FILTER_DIR")
+let config = parseFile(fmt"{rootDir}/config.json")
+
+if not config.hasKey("compiler"):
+    quit("config file missing field 'compiler' needed for dash to run")
 
 if not dirExists("./data/dash"):
     createDir("./data/dash")
 
-if not fileExists("./data/dash/config.json"):
-    quit("Must put a dash config at data/dash/config.json")
+if not dirExists("./data/dash/dash_compiler"):
+    writeFile("./data/dash/dash.zip", fetch(fmt"https://github.com/bridge-core/deno-dash-compiler/archive/refs/tags/v{dashVersion}.zip"))
+    extractAll("./data/dash/dash.zip", "./data/dash/tmp")
+    moveDir(fmt"./data/dash/tmp/deno-dash-compiler-{dashVersion}", "./data/dash/dash_compiler")
+    removeDir("./data/dash/tmp")
+    removeFile("./data/dash/dash.zip")
+    setCurrentDir("./data/dash/dash_compiler")
+    discard execShellCmd("deno task install:full")
+    setCurrentDir(filterDir)
 
-var dashExt = ""
-if ExeExt == "exe":
-    dashExt = ".exe"
-if not dirExists("./data/dash/deno_dash"):
-    discard execShellCmd("git clone https://github.com/evilguy50/deno-dash-compiler.git ./data/dash/deno_dash")
-    removeDir("./data/dash/deno_dash/.git")
-if not fileExists(fmt"./data/dash/dash{dashExt}"):
-    discard execShellCmd(fmt"deno compile --output ./data/dash/dash{dashExt} -A ./data/dash/deno_dash/mod.ts")
+copyFile(fmt"{rootDir}/config.json", "./config.json")
 
-copyFile("./data/dash/config.json", "./config.json")
+discard execShellCmd("dash_compiler build --compilerConfig:./config.json")
 
-if dirExists("./data/dash/build"):
-    removeDir("./data/dash/build")
-
-createDir("./data/dash/build")
-
-discard execShellCmd(fmt"{getCurrentDir()}/data/dash/dash.exe build --out ./data/dash/build")
-let config = readFile("./data/dash/config.json").parseJson()
-
-removeDir("./BP")
-moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " BP", "./BP")
-removeDir("./RP")
-moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " RP", "./RP")
+let configName: string = config["name"].to(string)
+for pack in @["BP", "RP"]:
+    removeDir(fmt"./{pack}")
+    sleep(1000)
+    moveDir(fmt"./builds/dist/{configName} {pack}", fmt"./{pack}")
