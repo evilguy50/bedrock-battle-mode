@@ -30,7 +30,7 @@ jobs:
         run: |
           sudo apt install jq -y
           curl --silent https://api.github.com/repos/Bedrock-OSS/regolith/releases/latest > versions.json
-          cat versions.json | jq -r ".assets[8].browser_download_url" | xargs wget
+          cat versions.json | jq -r ".assets[10].browser_download_url" | xargs wget
           cat versions.json | jq -r ".tag_name" > tag.txt
           tar -xzf regolith_$(cat tag.txt)_Linux_x86_64.tar.gz
           mv regolith /usr/local/bin
