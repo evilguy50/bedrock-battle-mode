@@ -32,4 +32,6 @@ let configName: string = config["name"].to(string)
 for pack in @["BP", "RP"]:
     removeDir(fmt"./{pack}")
     sleep(1000)
+    for d in walkDirRec("./builds/dist"):
+        echo fmt"buildPath: {d}"
     moveDir(fmt"./builds/dist/{configName} {pack}", fmt"./{pack}")
