@@ -12,6 +12,7 @@ definefunction <10tick>:
 definefunction <1sec>:
     # 1 second function
     execute if score spawned settings matches 1 if score started settings matches 0 if score start_timer settings matches 0..10 if score map settings matches 1.. run function `eval:mechs`start/countdown
+    execute if score spawned settings matches 1 if score started settings matches 1 if score fight settings matches 0 if score fight_timer settings matches 0..15 if score map settings matches 1.. run function `eval:mechs`fight
 definefunction <5sec>:
     # 5 second function
 definefunction <10sec>:
