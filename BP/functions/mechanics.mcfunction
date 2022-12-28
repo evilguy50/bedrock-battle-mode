@@ -1,8 +1,13 @@
 var mechs = "mechanics/"
 var maps = ["cavern", "cove", "crucible"]
 definefunction <settings>:
-    foreach <s set ["map", "spawned", "started", "start_timer", "players"]>:
+    foreach <s set ["map", "spawned", "started", "start_timer", "players", "fight_timer", "fight"]>:
         scoreboard players add `eval:set` settings 0
+definefunction <play>:
+    foreach <m map maps>:
+        definefunction <`eval:map`>:
+            function `eval:mechs`spawns/`eval:map`
+            function `eval:mechs`start
 definefunction <start>:
     scoreboard players reset * player
     foreach <s set ["start_timer", "spawned", "started", "players"]>:
@@ -14,9 +19,9 @@ definefunction <start>:
         scoreboard players operation @s player = max player
     scoreboard players operation players settings = max player
     scoreboard players reset max player
-    function `eval:mechs`spawns
     gamemode s @a
     execute @a ~~~ spawnpoint @s ~~~
+    execute if score spawned settings matches 0 run function `eval:mechs`spawns
     execute if score map settings matches 1.. run scoreboard players set spawned settings 1
     definefunction <countdown>:
         var fills = ["251 24 -6 285 36 31", "1340 -47 198 1319 -38 178", "646 6 873 671 14 900"]
@@ -39,6 +44,8 @@ definefunction <start>:
                     function `eval:mechs`chests/`eval:map`/fill
             title @a title §4Fight!
             scoreboard players set started settings 1
+            scoreboard players set fight_timer settings 15
+            scoreboard players set fight settings 0
 definefunction <restart>:
     function <check>:
         scoreboard players set players settings 0
@@ -60,6 +67,21 @@ definefunction <restart>:
 definefunction <inventory>:
     for <i 0..27 1>:
         replaceitem entity @a slot.inventory `eval:i` keep minecraft:barrier 1 0 {"keep_on_death": {},"item_lock": { "mode": "lock_in_slot" } }
+
+definefunction <fight>:
+    for <i 15..0 -1>:
+        if <i == 15>:
+            execute if score fight_timer settings matches 15 run function <start>:
+                gamerule pvp false
+                effect @a resistance 15 255 true
+        execute if score fight_timer settings matches `eval:i` run titleraw @a actionbar {"rawtext": [{"text": "Invulnerability wears off in `eval:i` seconds!"}]}
+        if <i == 0>:
+            execute if score fight_timer settings matches 0 run function <end>:
+                gamerule pvp true
+                effect @a clear
+                scoreboard players set fight settings 1
+    scoreboard players remove fight_timer settings 1
+
 definefunction <tnt>:
     summon minecraft:tnt ~ ~ ~
     clear @s pulsar:tnt 0 1
@@ -116,6 +138,8 @@ definefunction <spawns>:
         var new_m = m + 1
         var new_face = face_points[m]
         execute if score map settings matches `eval:new_m` run function <`eval:map`>:
+            scoreboard players set map settings `eval:new_m`
+            execute if score spawned settings matches 0 run scoreboard players set spawned settings 1
             foreach <p pl `eval:map`_points>:
                 var new_p = p + 1
                 tp @e[scores={player=`eval:new_p`}] `eval:pl` facing `eval:new_face`
@@ -136,6 +160,4 @@ definefunction <lobby>:
             structure load `eval:skull` `eval:new_skull`
 
 definefunction <bridge_test>:
-    for <i 1..6 1>:
-        function <`eval:i`>:
-            helloworld evil raver derek
+    playermsg @r[type=armor_stand] "this is a custom command test"

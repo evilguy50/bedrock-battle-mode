@@ -36,11 +36,11 @@
   "regolith": {
     "dataPath": "./data",
     "filterDefinitions": {
-      "dash": {
-        "script": "./filters/dash/dash.nim",
-        "runWith": "nim"
-      },
       "blockbench_convert": {
+        "version": "latest"
+      },
+      "dash": {
+        "url": "github.com/evilguy50/my-regolith-filters",
         "version": "latest"
       },
       "classes": {
@@ -124,10 +124,10 @@
             "filter": "style_lint"
           },
           {
-            "filter": "new_exec"
+            "filter": "no_blank"
           },
           {
-            "filter": "no_blank"
+            "filter": "new_exec"
           }
         ]
       },
@@ -168,10 +168,10 @@
             "filter": "style_lint"
           },
           {
-            "filter": "new_exec"
+            "filter": "no_blank"
           },
           {
-            "filter": "no_blank"
+            "filter": "new_exec"
           }
         ]
       }
