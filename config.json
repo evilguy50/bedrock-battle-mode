@@ -2,46 +2,19 @@
   "name": "battle_mode",
   "author": "evil",
   "packs": {
-    "behaviorPack": "./BP",
-    "resourcePack": "./RP"
-  },
-  "experimentalGameplay": {
-    "holidayCreatorFeatures": false,
-    "creationOfCustomBiomes": false,
-    "upcomingCreatorFeatures": false,
-    "enableGameTestFramework": false,
-    "experimentalMolangFeatures": false,
-    "educationEdition": false
-  },
-  "bdsProject": false,
-  "compiler": {
-    "plugins": [
-      "generatorScripts",
-      "typeScript",
-      "entityIdentifierAlias",
-      "customEntityComponents",
-      "customItemComponents",
-      "customBlockComponents",
-      "customCommands",
-      "moLang",
-      "formatVersionCorrection",
-      [
-        "simpleRewrite",
-        {
-          "packName": "battle_mode"
-        }
-      ]
-    ]
+    "behaviorPack": "./packs/BP",
+    "resourcePack": "./packs/RP"
   },
   "regolith": {
-    "dataPath": "./data",
+    "dataPath": "./packs/data",
     "filterDefinitions": {
       "blockbench_convert": {
         "version": "latest"
       },
       "dash": {
         "url": "github.com/evilguy50/my-regolith-filters",
-        "version": "latest"
+        "version": "latest",
+        "arguments": ["--bridgeConfig"]
       },
       "classes": {
         "url": "github.com/evilguy50/my-regolith-filters",
