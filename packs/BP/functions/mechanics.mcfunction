@@ -19,7 +19,7 @@ definefunction <start>:
         scoreboard players operation @s player = max player
     scoreboard players operation players settings = max player
     scoreboard players reset max player
-    gamemode s @a
+    gamemode a @a
     execute @a ~~~ spawnpoint @s ~~~
     execute if score spawned settings matches 0 run function `eval:mechs`spawns
     execute if score map settings matches 1.. run scoreboard players set spawned settings 1
@@ -57,7 +57,7 @@ definefunction <restart>:
         kill @e[type=pulsar:chest_refill]
         scoreboard players reset @a *
         scoreboard players reset @e *
-        gamemode s @a
+        gamemode a @a
         clear @a
         foreach <s set ["started", "spawned", "start_timer", "refill_timer", "map"]>:
             scoreboard players set `eval:set` settings 0
