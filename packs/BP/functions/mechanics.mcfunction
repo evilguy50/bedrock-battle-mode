@@ -1,7 +1,8 @@
 var mechs = "mechanics/"
 var maps = ["cavern", "cove", "crucible"]
+var settings = ["map", "spawned", "started", "start_timer", "players", "fight_timer", "fight", "lobby_start", "lobby_timer"]
 definefunction <settings>:
-    foreach <s set ["map", "spawned", "started", "start_timer", "players", "fight_timer", "fight"]>:
+    foreach <s set settings>:
         scoreboard players add `eval:set` settings 0
 definefunction <play>:
     foreach <m map maps>:
@@ -11,7 +12,7 @@ definefunction <play>:
 definefunction <start>:
     scoreboard players reset * player
     foreach <s set ["start_timer", "spawned", "started", "players"]>:
-        scoreboard players set `eval:set` settings 0
+        setting `eval:set` 0
     scoreboard players add @a player 0
     scoreboard players add @e[type=minecraft:armor_stand] player 0
     execute @e[scores={player=0}] ~ ~ ~ function <set>:
@@ -21,6 +22,9 @@ definefunction <start>:
     scoreboard players reset max player
     gamemode a @a
     execute @a ~~~ spawnpoint @s ~~~
+    clear @a
+    effect @a instant_health 1 255 true
+    effect @a saturation 1 255 true
     execute if score spawned settings matches 0 run function `eval:mechs`spawns
     execute if score map settings matches 1.. run scoreboard players set spawned settings 1
     definefunction <countdown>:
@@ -33,6 +37,8 @@ definefunction <start>:
                 function `eval:mechs`chests/`eval:map`/empty
         execute if score start_timer settings matches 0 run scoreboard players set start_timer settings 6
         scoreboard players remove start_timer settings 1
+        effect @a slowness 5 2 true
+        execute @a ~ ~ ~ tp @s ~ ~ ~
         for <t 6..0 -1>:
             execute if score start_timer settings matches `eval:t` run title @a title §a`eval:t`
         execute if score start_timer settings matches 0 run function <done>:
@@ -43,12 +49,13 @@ definefunction <start>:
                     fill `eval:new_fill` structure_void 0 replace barrier -1
                     function `eval:mechs`chests/`eval:map`/fill
             title @a title §4Fight!
-            scoreboard players set started settings 1
-            scoreboard players set fight_timer settings 15
-            scoreboard players set fight settings 0
+            effect @a clear
+            setting started 1
+            setting fight_timer 15
+            setting fight 0
 definefunction <restart>:
     function <check>:
-        scoreboard players set players settings 0
+        setting players 0
         execute @e[type=minecraft:armor_stand] ~ ~ ~ scoreboard players add players settings 1
         for <m 0..3 1>:
             execute @a[m=`eval:m`,x=761,y=-56,z=382,rm=120] ~ ~ ~ scoreboard players add players settings 1
@@ -59,8 +66,17 @@ definefunction <restart>:
         scoreboard players reset @e *
         gamemode a @a
         clear @a
-        foreach <s set ["started", "spawned", "start_timer", "refill_timer", "map"]>:
-            scoreboard players set `eval:set` settings 0
+        replaceitem entity @a slot.hotbar 8 pulsar:vote 1 0 { "keep_on_death": {}, "item_lock": { "mode": "lock_in_slot" } }
+        foreach <s set settings>:
+            setting `eval:set` 0
+        setting lobby_timer 30
+        tag @a remove voted
+        gamerule pvp false
+        effect @a instant_health 1 255 true
+        effect @a saturation 1 255 true
+        foreach <m map maps>:
+            scoreboard players set `eval:map` votes 0
+            tag @a remove voted_`eval:map`
         function `eval:mechs`start
         
     
@@ -69,7 +85,7 @@ definefunction <inventory>:
         replaceitem entity @a slot.inventory `eval:i` keep minecraft:barrier 1 0 {"keep_on_death": {},"item_lock": { "mode": "lock_in_slot" } }
 
 definefunction <fight>:
-    for <i 15..0 -1>:
+    for <i 15..-1 -1>:
         if <i == 15>:
             execute if score fight_timer settings matches 15 run function <start>:
                 gamerule pvp false
@@ -79,7 +95,7 @@ definefunction <fight>:
             execute if score fight_timer settings matches 0 run function <end>:
                 gamerule pvp true
                 effect @a clear
-                scoreboard players set fight settings 1
+                setting fight 1
     scoreboard players remove fight_timer settings 1
 
 definefunction <tnt>:
@@ -138,7 +154,7 @@ definefunction <spawns>:
         var new_m = m + 1
         var new_face = face_points[m]
         execute if score map settings matches `eval:new_m` run function <`eval:map`>:
-            scoreboard players set map settings `eval:new_m`
+            setting map `eval:new_m`
             execute if score spawned settings matches 0 run scoreboard players set spawned settings 1
             foreach <p pl `eval:map`_points>:
                 var new_p = p + 1
@@ -147,7 +163,51 @@ definefunction <refill>:
     foreach <m map maps>:
         var new_m = m + 1
         execute if score map settings matches `eval:new_m` run function `eval:mechs`chests/`eval:map`/refill
+
+definefunction <votes>:
+    definefunction <display>:
+        scoreboard objectives setdisplay sidebar votes
+        replaceitem entity @a slot.hotbar 8 pulsar:vote 1 0 {"item_lock": { "mode": "lock_in_slot" }, "keep_on_death": {}}
+        scoreboard players reset highest votes
+        scoreboard players reset high_id votes
+        foreach <m map maps>:
+            scoreboard players add `eval:map` votes 0
+    definefunction <calc>:
+        scoreboard players set highest votes 0
+        scoreboard players set high_id votes 0
+        var map_count = 0
+        foreach <m map maps>:
+            var new_m = m + 1
+            var map_count = map_count + 1
+            execute if score `eval:map` votes > highest votes run function <`eval:map`>:
+                scoreboard players operation highest votes = `eval:map` votes
+                scoreboard players set high_id votes `eval:new_m`
+        execute if score high_id votes matches 0 run scoreboard players random high_id votes 1 `eval:map_count`
+        foreach <m map maps>:
+            var new_m = m + 1
+            execute if score high_id votes matches `eval:new_m` run function `eval:mechs`play/`eval:map`
+
 definefunction <lobby>:
+    function <main>:
+        function `eval:mechs`votes/display
+        effect @a resistance 10 255 true
+        effect @a saturation 10 255 true
+        setting players 0
+        execute @a ~~~ scoreboard players add players settings 1
+        execute @e[type=armor_stand] ~ ~ ~ scoreboard players add players settings 1
+    function <countdown>:
+        execute if score players settings matches 1 run function <reset>:
+            setting lobby_start 0
+            setting lobby_timer 30
+        execute if score players settings matches 2.. if score lobby_timer settings matches 0.. run function <run>:
+            setting lobby_start 1
+            titleraw @a actionbar {"rawtext": [ { "text": "Match will start in " }, { "score": {"name": "lobby_timer", "objective": "settings" }}, { "text": " seconds!" }]}
+            scoreboard players remove lobby_timer settings 1
+            execute if score lobby_timer settings matches -1 run function <final>:
+                setting lobby_start 0
+                setting lobby_timer 30
+                function `eval:mechs`votes/calc
+
     definefunction <reset>:
         for <c 472..477 1>:
             setblock 802 57 `eval:c` chest 0

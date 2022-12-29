@@ -38,7 +38,7 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "minecraft:potion",
+                    "name": "minecraft:splash_potion",
                     "functions": [
                         {
                             "function": "set_data",

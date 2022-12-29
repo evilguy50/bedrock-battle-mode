@@ -4,7 +4,7 @@
         "description": {
             "identifier": "pulsar:chest_refill",
             "is_summonable": true,
-            "is_spawnable": true,
+            "is_spawnable": false,
             "is_experimental": false
         },
         "component_groups": {
