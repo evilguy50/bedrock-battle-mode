@@ -14,11 +14,7 @@
 			],
 			"textures": {
 				"default": "textures/entity/chest_refill"
-			},
-            "spawn_egg": {
-         "texture": "chest_refill",
-	 "texture_index": 0
-            }
+			}
 		}
 	}
 }

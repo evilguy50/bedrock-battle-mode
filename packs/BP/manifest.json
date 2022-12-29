@@ -7,12 +7,22 @@
     "version": [0, 0, 1],
     "min_engine_version": [1, 19, 50]
   },
-  "modules": [{
-    "description": "pack.description",
-    "type": "data",
-    "uuid": "19d9b4af-e5dc-4433-9ba5-254f37a3c14b",
-    "version": [0, 0, 1]
-  }],
+  "modules": [
+    {
+      "description": "pack.description",
+      "type": "data",
+      "uuid": "19d9b4af-e5dc-4433-9ba5-254f37a3c14b",
+      "version": [0, 0, 1]
+    },
+    {
+      "description": "ui scripts",
+      "type": "script",
+      "language": "javascript",
+      "uuid": "1a1b53fc-5653-4a75-91b7-9cdF027674ae",
+      "version": [0, 0, 1],
+      "entry": "scripts/index.js"
+    }
+  ],
   "metadata": {
     "generated_with": {
       "Pulsar": [
@@ -26,5 +36,18 @@
   "dependencies": [{
     "uuid": "ded07a03-0a1a-46ff-b17d-fa55bc4217e7",
     "version": [0, 0, 1]
-  }]
+  },
+  {
+    "module_name": "@minecraft/server",
+    "version": "1.1.0-beta"
+  },
+  {
+    "module_name": "@minecraft/server-gametest",
+    "version": "1.0.0-beta"
+  },
+  {
+    "module_name": "@minecraft/server-ui",
+    "version": "1.0.0-beta"
+  }
+]
 }

@@ -6,10 +6,10 @@
     "resourcePack": "./RP"
   },
   "experimentalGameplay": {
-    "holidayCreatorFeatures": false,
+    "holidayCreatorFeatures": true,
     "creationOfCustomBiomes": false,
-    "upcomingCreatorFeatures": false,
-    "enableGameTestFramework": false,
+    "upcomingCreatorFeatures": true,
+    "enableGameTestFramework": true,
     "experimentalMolangFeatures": false,
     "educationEdition": false
   },

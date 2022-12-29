@@ -2,11 +2,11 @@
   "resource_pack_name": "packs",
   "texture_name": "atlas.items",
   "texture_data": {
-    "chest_refill": {
-      "textures": "textures/items/egg/chest_refill"
-    },
     "tnt": {
-      "textures": "textures/items/tnt"
+      "textures": "textures/blocks/tnt_side"
+    },
+    "vote": {
+      "textures": "textures/items/banner_pattern"
     }
   }
 }

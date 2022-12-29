@@ -5,3 +5,4 @@ pack.description=generated with Pulsar
 entity.pulsar:chest_refill.name=chest_refill
 item.spawn_egg.entity.pulsar:chest_refill.name=chest_refill
 item.pulsar:tnt=tnt
+item.pulsar:vote=vote
